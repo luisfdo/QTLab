@@ -70,6 +70,20 @@ the bottom of the page describing which changes have you made and what
 are the motivations behind them and submit your proposal.
 
 
+## Engineering Principles
+
+1. Correctness before performance.
+2. Explicit is better than implicit.
+3. Make illegal states impossible.
+4. Small composable components.
+5. Immutable domain models where practical.
+6. Every feature must be testable.
+7. Document decisions.
+8. Research before optimization.
+9. Separate concerns.
+10. A passing backtest is not evidence of a good strategy.
+
+
 ## Code Contributions
 
 To help you get started quickly please refer to our [README.md](README.md) and
