@@ -38,3 +38,38 @@ Each document should answer *Why does this subsystem exist?*
 not *What functions does it have?*
 
 That's much more valuable.
+
+## Project Vocabulary
+
+| Prefix | Meaning                       |
+|--------|-------------------------------|
+| ADR    | Architecture Decision Record  |
+| DS     | Dataset                       |
+| EXP    | Experiment                    |
+| HYP    | Research hypothesis           |
+| QT     | QTLab engineering task        |
+| RFC    | Request for Comments          |
+| SPEC   | Functional specification      |
+| TEST   | Acceptance or validation test |
+
+
+## Practicalities
+
+### I did
+
+    uv add --dev ruff
+    uv add --dev mypy
+    uv add --dev pytest
+    uv add --dev pre-commit
+
+### To run
+
+    uv run ruff check .
+    uv run ruff format .
+
+    uv run mypy .
+
+    uv run pytest
+    uv run pytest tests/test_login.py
+
+    uv run pre-commit install
