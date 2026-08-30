@@ -1,9 +1,19 @@
 # QTLab
 
-## Mission
-**QTLab is an open-source quantitative research platform for 
-designing, validating, and comparing systematic trading strategies using scientific methodology.**
+## Vision
+QTLab aims to become the open-source operating system for quantitative investment research.
+It enables researchers to transform market observations into evidence-based investment decisions through reproducible experiments and rigorous validation.
 
+>It is not a trading bot, a signal generator, or a strategy optimizer. It is a platform that enables researchers to transform observations about financial markets into evidence-based investment decisions through disciplined experimentation, rigorous validation, and continuous learning.
+>
+>Every component in QTLab exists to answer one question:
+> 
+>**"What does the evidence tell us?"**
+
+## Mission
+**QTLab is an open-source quantitative research operating system
+that helps researchers transform market observations into 
+evidence-based investment decisions through reproducible experiments.**
 
 ## Coding Standards
 Type hints everywhere:
@@ -51,6 +61,43 @@ That's much more valuable.
 | RFC    | Request for Comments          |
 | SPEC   | Functional specification      |
 | TEST   | Acceptance or validation test |
+
+
+## Workflow
+
+                  MARKET
+                     │
+                     ▼
+              Observation
+                     │
+                     ▼
+            Research Question
+                     │
+                     ▼
+               Hypothesis
+                     │
+                     ▼
+               Experiment
+                     │
+         ┌───────────┴────────────┐
+         ▼                        ▼
+     Validation              Analytics
+         │                        │
+         └───────────┬────────────┘
+                     ▼
+                 Evidence
+                     │
+                     ▼
+                Conclusion
+                     │
+                     ▼
+            Investment Decision
+                     │
+                     ▼
+              Live Monitoring
+                     │
+                     ▼
+              New Observations
 
 
 ## Practicalities
