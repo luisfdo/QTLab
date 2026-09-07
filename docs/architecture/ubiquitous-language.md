@@ -13,3 +13,18 @@ Certain words should have exactly one meaning.
 | Position     | Current holdings in one instrument                |
 | Signal       | Recommendation from a strategy                    |
 | Strategy     | Component that generates signals                  |
+
+
+## Challenging the project's language
+
+Run Experiment → Challenge Hypothesis
+
+Optimize Parameters → Explore Sensitivity
+
+Best Strategy → Most Robust Evidence
+
+Winning Strategy → Validated Hypothesis
+
+Best Parameters → Robust Parameter Range
+
+Failure → Rejected Hypothesis
