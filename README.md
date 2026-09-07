@@ -11,9 +11,9 @@ It enables researchers to transform market observations into evidence-based inve
 >**"What does the evidence tell us?"**
 
 ## Mission
-**QTLab is an open-source quantitative research operating system
-that helps researchers transform market observations into 
-evidence-based investment decisions through reproducible experiments.**
+**QTLab is a research operating system that transforms market observations into evidence-based investment knowledge 
+by guiding researchers through a structured, reproducible scientific process while minimizing the technical, 
+statistical, and cognitive friction traditionally associated with quantitative research.**
 
 ## Coding Standards
 Type hints everywhere:
