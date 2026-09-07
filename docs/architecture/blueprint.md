@@ -2,6 +2,11 @@
 
 ## Quantitative Research Operating System
 
+>QTLab is architected as a layered system. 
+> 
+>The Research Engine is independent of presentation, storage, and deployment technologies. The same engine may be 
+> accessed through a web application, APIs, notebooks, or automation tools.
+
 ---
 
 ### Research Lifecycle
