@@ -23,3 +23,11 @@ over:
 A successful backtest is not considered evidence that a strategy works.
 
 It is merely one piece of evidence requiring further validation.
+
+
+## Principles
+
+Knowledge compounds. QTLab preserves not only results but also the reasoning that produced them, allowing future
+research to build on past understanding instead of repeating it.
+
+Every feature in QTLab must help researchers learn something they didn't know before.
