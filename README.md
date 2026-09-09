@@ -1,6 +1,9 @@
 # QTLab
+>QTLab is a system for conducting and preserving quantitative studies.
 
 ## Vision
+QTLab exists to help researchers construct, challenge, preserve, and evolve evidence-based arguments about financial markets.
+
 QTLab aims to become the open-source operating system for quantitative investment research.
 It enables researchers to transform market observations into evidence-based investment decisions through reproducible experiments and rigorous validation.
 
