@@ -22,4 +22,4 @@
 
 6. *Research is iterative.*
 
-    Every conclusion should inspire a better question.
+    Every conclusion should inspire a better question. QTLab should never require certainty where only evidence exists.
