@@ -123,3 +123,7 @@ That's much more valuable.
     uv run pytest tests/test_login.py
 
     uv run pre-commit install
+
+    # to run:
+    uv sync
+    uv run uvicorn qtlab.api.main:app --reload --host 0.0.0.0 --port 8080
