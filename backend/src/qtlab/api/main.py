@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from qtlab.api.studies import router as studies_router
+from qtlab.infrastructure.database import Base, engine
 
 
 app = FastAPI(
@@ -9,7 +10,8 @@ app = FastAPI(
 )
 
 app.include_router(studies_router)
-
+# Create the database
+Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def root():

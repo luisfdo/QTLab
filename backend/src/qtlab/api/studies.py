@@ -1,15 +1,18 @@
+from collections.abc import Generator
 from uuid import UUID
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
-from qtlab.infrastructure.study_repository import InMemoryStudyRepository
+# from qtlab.infrastructure.study_repository import InMemoryStudyRepository
+from qtlab.infrastructure.database import SessionLocal
+from qtlab.infrastructure.sqlite_study_repository import SQLiteStudyRepository
 from qtlab.use_cases.create_study import CreateStudy, CreateStudyRequest
-
 
 router = APIRouter(prefix="/studies", tags=["studies"])
 
-repository = InMemoryStudyRepository()
+# repository = InMemoryStudyRepository()
 
 
 class CreateStudyPayload(BaseModel):
@@ -20,8 +23,32 @@ class CreateStudyResponse(BaseModel):
     id: UUID
 
 
-@router.post("", response_model=CreateStudyResponse)
-def create_study(payload: CreateStudyPayload) -> CreateStudyResponse:
+def get_session() -> Generator:
+    session = SessionLocal()
+
+    try:
+        yield session
+    finally:
+        session.close()
+
+
+# @router.post("", response_model=CreateStudyResponse)
+# def create_study(payload: CreateStudyPayload) -> CreateStudyResponse:
+#     use_case = CreateStudy(repository)
+#
+#     study_id = use_case.execute(
+#         CreateStudyRequest(
+#             observation=payload.observation,
+#         )
+#     )
+#
+#     return CreateStudyResponse(id=study_id)
+
+
+@router.post("")
+def create_study(payload: CreateStudyPayload, session: Session = Depends(get_session),):
+    repository = SQLiteStudyRepository(session)
+
     use_case = CreateStudy(repository)
 
     study_id = use_case.execute(
@@ -34,7 +61,8 @@ def create_study(payload: CreateStudyPayload) -> CreateStudyResponse:
 
 
 @router.get("/{study_id}")
-def get_study(study_id: UUID):
+def get_study(study_id: UUID, session: Session = Depends(get_session),):
+    repository = SQLiteStudyRepository(session)
     study = repository.get(study_id)
 
     if study is None:
