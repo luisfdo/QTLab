@@ -10,8 +10,8 @@ app = FastAPI(
 )
 
 app.include_router(studies_router)
-# Create the database
-Base.metadata.create_all(bind=engine)
+# Create the databases
+# Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def root():
