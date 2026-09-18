@@ -51,9 +51,26 @@ class SQLiteStudyRepository:
         if model is None:
             return None
 
+        return self._to_domain(model)
+
+    def list(self) -> list[Study]:
+        models = self._session.scalars(
+            select(StudyModel).order_by(
+                StudyModel.updated_at.desc()
+            )
+        ).all()
+
+        return [
+            self._to_domain(model)
+            for model in models
+        ]
+
+    def _to_domain(self, model: StudyModel) -> Study:
         events = (
             self._session.query(StudyEventModel)
-            .filter(StudyEventModel.study_id == study_id)
+            .filter(
+                StudyEventModel.study_id == model.id
+            )
             .order_by(StudyEventModel.occurred_at)
             .all()
         )
@@ -64,7 +81,7 @@ class SQLiteStudyRepository:
             if event.event_type == "StudyCreated":
                 timeline.append(
                     StudyCreated(
-                        study_id=study_id,
+                        study_id=model.id,
                         occurred_at=event.occurred_at,
                     )
                 )

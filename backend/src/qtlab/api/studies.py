@@ -6,8 +6,10 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 # from qtlab.infrastructure.study_repository import InMemoryStudyRepository
+from qtlab.api.schemas import StudyResponse
 from qtlab.infrastructure.database import SessionLocal
 from qtlab.infrastructure.sqlite_study_repository import SQLiteStudyRepository
+from qtlab.api.mappers import study_to_response
 from qtlab.use_cases.create_study import CreateStudy, CreateStudyRequest
 
 router = APIRouter(prefix="/studies", tags=["studies"])
@@ -85,3 +87,17 @@ def get_study(study_id: UUID, session: Session = Depends(get_session),):
             for event in study.timeline
         ],
     }
+
+
+@router.get("", response_model=list[StudyResponse])
+def list_studies(
+    session: Session = Depends(get_session),
+) -> list[StudyResponse]:
+    repository = SQLiteStudyRepository(session)
+
+    studies = repository.list()
+
+    return [
+        study_to_response(study)
+        for study in studies
+    ]

@@ -4,6 +4,14 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict
 
 
+class CreateStudyRequest(BaseModel):
+    observation: str
+
+
+class CreateStudyResponse(BaseModel):
+    id: UUID
+
+
 class TimelineEventResponse(BaseModel):
     type: str
     occurred_at: datetime
