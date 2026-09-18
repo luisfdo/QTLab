@@ -6,6 +6,11 @@ def study_to_response(study: Study) -> StudyResponse:
     return StudyResponse(
         id=study.id,
         observation=study.observation.text,
+        research_question=(
+            study.research_question.text
+            if study.research_question is not None
+            else None
+        ),
         status=study.status.value,
         created_at=study.created_at,
         updated_at=study.updated_at,

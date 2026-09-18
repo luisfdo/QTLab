@@ -22,7 +22,12 @@ class StudyResponse(BaseModel):
 
     id: UUID
     observation: str
+    research_question: str | None
     status: str
     created_at: datetime
     updated_at: datetime
     timeline: list[TimelineEventResponse]
+
+
+class DefineResearchQuestionRequest(BaseModel):
+    text: str

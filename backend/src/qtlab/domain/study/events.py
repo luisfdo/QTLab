@@ -9,3 +9,9 @@ class StudyCreated:
     occurred_at: datetime
 
 TimelineEvent = StudyCreated
+
+
+@dataclass(frozen=True)
+class ResearchQuestionDefined:
+    study_id: UUID
+    occurred_at: datetime
