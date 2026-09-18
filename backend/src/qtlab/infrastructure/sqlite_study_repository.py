@@ -4,11 +4,13 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from qtlab.domain.study.entities import Study
+from qtlab.domain.study.events import StudyCreated
+from qtlab.domain.study.research_question import ResearchQuestion
 from qtlab.domain.study.status import StudyStatus
 from qtlab.domain.study.value_objects import Observation
-from qtlab.domain.study.events import StudyCreated
 
 from .models import StudyModel, StudyEventModel
+from ..domain.study.events import ResearchQuestionDefined
 
 
 class SQLiteStudyRepository:
@@ -85,6 +87,22 @@ class SQLiteStudyRepository:
                         occurred_at=event.occurred_at,
                     )
                 )
+            elif event.event_type == "ResearchQuestionDefined":
+                timeline.append(
+                    ResearchQuestionDefined(
+                        study_id=model.id,
+                        occurred_at=event.occurred_at,
+                    )
+                )
+
+        research_question = (
+            ResearchQuestion(
+                text=model.research_question,
+                created_at=model.created_at,
+            )
+            if model.research_question
+            else None
+        )
 
         return Study(
             id=model.id,
@@ -92,6 +110,7 @@ class SQLiteStudyRepository:
                 text=model.observation,
                 created_at=model.created_at,
             ),
+            research_question=research_question,
             status=StudyStatus(model.status),
             created_at=model.created_at,
             updated_at=model.updated_at,
