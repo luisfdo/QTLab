@@ -9,7 +9,10 @@ export default function App() {
 
   if (study) {
     return (
-      <StudyPage study={study} />
+      <StudyPage
+        study={study}
+        onStudyUpdated={setStudy}
+      />
     );
   }
 

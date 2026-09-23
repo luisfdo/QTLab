@@ -6,6 +6,7 @@ export interface TimelineEvent {
 export interface Study {
   id: string;
   observation: string;
+  research_question: string | null;
   status: string;
   created_at: string;
   updated_at: string;
@@ -49,6 +50,24 @@ export async function listStudies(): Promise<Study[]> {
 
   if (!response.ok) {
     throw new Error("Failed to load studies");
+  }
+
+  return response.json();
+}
+
+export async function defineResearchQuestion(id: string, text: string): Promise<Study> {
+  const response = await fetch(`${API_URL}/studies/${id}/research-question`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to define research question");
   }
 
   return response.json();

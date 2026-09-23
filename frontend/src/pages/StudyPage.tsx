@@ -1,10 +1,12 @@
 import type { Study } from "../api/studies";
+import { ResearchQuestionForm } from "../components/ResearchQuestionForm";
 
 interface Props {
   study: Study;
+  onStudyUpdated: (study: Study) => void;
 }
 
-export function StudyPage({ study }: Props) {
+export function StudyPage({ study, onStudyUpdated, }: Props) {
   return (
     <main>
       <h1>Study</h1>
@@ -17,6 +19,19 @@ export function StudyPage({ study }: Props) {
       </section>
 
       <section>
+        <h2>Research question</h2>
+
+        {study.research_question ? (
+          <p>{study.research_question}</p>
+        ) : (
+          <ResearchQuestionForm
+            study={study}
+            onStudyUpdated={onStudyUpdated}
+          />
+        )}
+      </section>
+
+      <section>
         <h2>Timeline</h2>
 
         <ol>
@@ -24,7 +39,7 @@ export function StudyPage({ study }: Props) {
             <li key={`${event.type}-${event.occurred_at}`}>
               <strong>{formatEventType(event.type)}</strong>
               <time>
-                {new Date(event.occurred_at).toLocaleString()}
+                {new Date(event.occurred_at,).toLocaleString()}
               </time>
             </li>
           ))}
