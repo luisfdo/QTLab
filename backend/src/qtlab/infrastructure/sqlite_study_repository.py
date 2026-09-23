@@ -24,6 +24,7 @@ class SQLiteStudyRepository:
             status=study.status.value,
             created_at=study.created_at,
             updated_at=study.updated_at,
+            research_question=(study.research_question.text if study.research_question is not None else None),
         )
 
         self._session.merge(model)
